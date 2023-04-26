@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/FoodListing.css";
-import Endpoints from "../endpoints";
-
+import Endpoints from "../Endpoints";
 const Wastage = () => {
   const [wastages, setWastages] = useState([]);
 
@@ -40,9 +39,18 @@ const Wastage = () => {
     );
   };
 
+  const [foodItems, setFoodItems] = useState<any>([]);
   const [date, setDate] = useState("");
   const [foodWasteAmount, setFoodWasteAmount] = useState("");
-  const [foodId, setFoodId] = useState("");
+  const [foodId, setFoodId] = useState("1");
+
+  //food drop down list
+  useEffect(() => {
+    fetch("http://localhost:3002/api/v1/getFoodList")
+      .then((response) => response.json())
+      .then((data) => setFoodItems(data.data.foodItems))
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -86,13 +94,14 @@ const Wastage = () => {
           />
         </div>
         <div>
-          <label htmlFor="foodId">Food ID:</label>
-          <input
-            type="number"
-            id="foodId"
-            value={foodId}
-            onChange={(e) => setFoodId(e.target.value)}
-          />
+          <label htmlFor="food">Food:</label>
+          <select value={foodId} onChange={(e) => setFoodId(e.target.value)}>
+            {foodItems.map((foodItem: any) => (
+              <option key={foodItem.food_id} value={foodItem.food_id}>
+                {foodItem.name}
+              </option>
+            ))}
+          </select>
         </div>
         <button type="submit">Submit</button>
       </form>
