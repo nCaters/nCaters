@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../css/FoodPreference.css';
 import moment from 'moment';
 import Dashboard from '../components/Dashboard';
+import Endpoints from '../endpoints';
 
 
 const FoodPreference = () => {
@@ -30,13 +31,13 @@ const FoodPreference = () => {
 
   useEffect(() => {
     if (storedToken) {
-      fetch('http://localhost:3002/api/v1/meal')
+      fetch(Endpoints.ACCOUNT_FOOD_BASE +'/meal')
         .then(response => response.json())
         .then(data => setMealList(data.data))
         .catch(error => console.error(error));
 
 
-      fetch('http://localhost:3002/api/v1/food')
+      fetch(Endpoints.ACCOUNT_FOOD_BASE +'/food')
         .then(response => response.json())
         .then(data => {
           const foodData = data.data.food;
@@ -53,7 +54,7 @@ const FoodPreference = () => {
         })
         .catch(error => console.error(error));
     }
-    fetch('http://localhost:3001/dashboard', {
+    fetch(Endpoints.ACCOUNT_FOOD_BASE +'/dashboard', {
       method: 'POST',
       headers: {
         // 'Content-Type': 'application/json',
@@ -100,7 +101,7 @@ const FoodPreference = () => {
       food_id: foodId,
     };
 
-    const response = await fetch('http://localhost:3002/api/v1/preference', {
+    const response = await fetch(Endpoints.ACCOUNT_FOOD_BASE +'/preference', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

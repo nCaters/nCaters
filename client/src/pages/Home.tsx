@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../css/Notification.css";
 import { useNavigate } from "react-router-dom";
+import Endpoints from "../endpoints";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Home = () => {
   const [notification, setNotification] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3003/api/v1/notification")
+    fetch(Endpoints.NOTIF_REWARD_BASE + "/notification")
       .then((response) => response.json())
       .then((data) => setNotification(data.data.message))
       .catch((error) => console.error(error));

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../css/FoodListing.css";
 import Dashboard from "../components/Dashboard";
+import Endpoints from "../endpoints";
 
 const Reward = () => {
   const [rewards, setRewards] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3004/api/v1/reward")
+    fetch(Endpoints.NOTIF_REWARD_BASE + "/reward")
       .then((response) => response.json())
       .then((data) => setRewards(data.data.reward))
       .catch((error) => console.error(error));

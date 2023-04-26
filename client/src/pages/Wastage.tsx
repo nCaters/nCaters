@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../css/FoodListing.css";
+import Endpoints from "../endpoints";
 
 const Wastage = () => {
   const [wastages, setWastages] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3002/api/v1/wastage")
+    fetch(Endpoints.NOTIF_REWARD_BASE + "/wastage")
       .then((response) => response.json())
       .then((data) => setWastages(data.data.wastage))
       .catch((error) => console.error(error));
@@ -46,7 +47,7 @@ const Wastage = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const response = await fetch(
-      "http://localhost:3002/api/v1/wasteage-entry",
+      Endpoints.NOTIF_REWARD_BASE + "/wasteage-entry",
       {
         method: "POST",
         headers: {

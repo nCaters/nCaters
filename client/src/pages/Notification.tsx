@@ -1,6 +1,7 @@
 import moment from "moment";
 import { useRef, useState } from "react";
 import "../css/Notification.css";
+import Endpoints from "../endpoints";
 
 const Notification = () => {
 
@@ -19,7 +20,7 @@ const Notification = () => {
     const handleAdd = async (event: any) => {
         event.preventDefault();
         const reqBody = { ...newNotification.current }
-        const response = await fetch('http://localhost:3003/api/v1/add_Notification', {
+        const response = await fetch(Endpoints.NOTIF_REWARD_BASE + '/add_Notification', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +38,7 @@ const Notification = () => {
     }
 
     const retrieveUpcomingNotifications = async () => {
-        const response = await fetch('http://localhost:3003/api/v1/get_Upcoming_Notifications');
+        const response = await fetch(Endpoints.NOTIF_REWARD_BASE + '/get_Upcoming_Notifications');
         const data = await response.json();
         if (data.status === "fail") {
             alert(data.data.Error);
@@ -48,7 +49,7 @@ const Notification = () => {
     }
 
     const refreshNotifications = async () => {
-        const response = await fetch('http://localhost:3003/api/v1/get_Upcoming_Notifications');
+        const response = await fetch(Endpoints.NOTIF_REWARD_BASE + '/get_Upcoming_Notifications');
         const data = await response.json();
         if (data.status === "fail") {
             alert(data.data.Error);
@@ -59,7 +60,7 @@ const Notification = () => {
 
     const handleDelete = async (id: number) => {
         const reqbody = { id: id }
-        const response = await fetch('http://localhost:3003/api/v1/delete_Notification', {
+        const response = await fetch(Endpoints.NOTIF_REWARD_BASE + '/delete_Notification', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ const Notification = () => {
             refreshNotifications();
         } else {
             const reqbody = { date: searchValue.current }
-            const response = await fetch('http://localhost:3003/api/v1/search_Notification', {
+            const response = await fetch(Endpoints.NOTIF_REWARD_BASE + '/search_Notification', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

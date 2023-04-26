@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/FoodListing.css';
 import Dashboard from '../components/Dashboard';
+import Endpoints from '../endpoints';
 
 const FoodListing = () => {
     const [restaurants, setRestaurants] = useState([]);
@@ -10,7 +11,7 @@ const FoodListing = () => {
         //     .then(response => response.json())
         //     .then(data => setRestaurants(data.data.food))
         //     .catch(error => console.error(error));
-        fetch('http://localhost:3002/api/v1/food-of-the-day')
+        fetch(Endpoints.ACCOUNT_FOOD_BASE+'/food-of-the-day')
             .then(response => response.json())
             .then(data => setRestaurants(data.data.food))
             .catch(error => console.error(error));
