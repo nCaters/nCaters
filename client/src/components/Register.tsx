@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Endpoints from "../endpoints";
 
 export default function Register(props: any) {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function Register(props: any) {
 
     try {
       const body = { role_id, username, email, password };
-      const response = await fetch("http://localhost:3001/auth/register", {
+      const response = await fetch(Endpoints.AUTH_BASE + "/register", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

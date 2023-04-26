@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Endpoints from "../endpoints";
 
 export default function Login(props: any) {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function Login(props: any) {
     e.preventDefault();
 
     const body = { email, password };
-    const response = await fetch("http://localhost:3001/auth/login", {
+    const response = await fetch(Endpoints.AUTH_BASE + "/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

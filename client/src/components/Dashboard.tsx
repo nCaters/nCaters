@@ -5,6 +5,7 @@ import FoodListing from "../pages/FoodListing";
 import FoodPreference from "../pages/FoodPreference";
 import Reward from "../pages/Reward";
 import Wastage from "../pages/Wastage";
+import Endpoints from "../endpoints";
 
 export default function Dashboard(props: any) {
   const { setAuth } = props;
@@ -23,7 +24,7 @@ export default function Dashboard(props: any) {
 
   const getProfile = async () => {
     try {
-      const res = await fetch("http://localhost:3001/dashboard/", {
+      const res = await fetch(Endpoints.DASHBOARD_BASE, {
         method: "POST",
         headers: { token: localStorage.token },
       });
@@ -53,7 +54,7 @@ export default function Dashboard(props: any) {
 
 
   useEffect(() => {
-    fetch('http://localhost:3003/api/v1/notification')
+    fetch(Endpoints.NOTIF_REWARD_BASE + '/api/v1/notification')
       .then(response => response.json())
       .then(data => setNotification(data.data.message))
       .catch(error => console.error(error));
