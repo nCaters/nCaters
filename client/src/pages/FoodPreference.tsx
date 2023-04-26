@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../css/FoodPreference.css';
 import moment from 'moment';
 import Dashboard from '../components/Dashboard';
-import Endpoints from '../endpoints';
+import Endpoints from '../Endpoints';
 
 
 const FoodPreference = () => {

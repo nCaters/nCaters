@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/FoodListing.css';
 import Dashboard from '../components/Dashboard';
-import Endpoints from '../endpoints';
+import Endpoints from '../Endpoints';
 
 const FoodListing = () => {
     const [restaurants, setRestaurants] = useState([]);

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Endpoints from "../endpoints";
+import Endpoints from "../Endpoints";
 
 export default function Login(props: any) {
   const navigate = useNavigate();

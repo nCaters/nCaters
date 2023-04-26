@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useRef, useState } from "react";
 import "../css/Notification.css";
-import Endpoints from "../endpoints";
+import Endpoints from "../Endpoints";
 
 const Notification = () => {
 

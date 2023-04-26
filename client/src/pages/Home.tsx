@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../css/Notification.css";
 import { useNavigate } from "react-router-dom";
-import Endpoints from "../endpoints";
+import Endpoints from "../Endpoints";
 
 const Home = () => {
   const navigate = useNavigate();

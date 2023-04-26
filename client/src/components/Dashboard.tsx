@@ -5,7 +5,7 @@ import FoodListing from "../pages/FoodListing";
 import FoodPreference from "../pages/FoodPreference";
 import Reward from "../pages/Reward";
 import Wastage from "../pages/Wastage";
-import Endpoints from "../endpoints";
+import Endpoints from "../Endpoints";
 
 export default function Dashboard(props: any) {
   const { setAuth } = props;
