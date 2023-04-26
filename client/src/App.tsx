@@ -20,11 +20,12 @@ import { useEffect, useState } from "react";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Endpoints from "./Endpoints";
 
 function App() {
   const checkAuthenticated = async () => {
     try {
-      const res = await fetch("http://localhost:3001/auth/verify", {
+      const res = await fetch(Endpoints.AUTH_BASE + "/verify", {
         method: "POST",
         headers: { token: localStorage.token },
       });
