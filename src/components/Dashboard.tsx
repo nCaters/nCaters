@@ -54,7 +54,7 @@ export default function Dashboard(props: any) {
 
 
   useEffect(() => {
-    fetch(Endpoints.NOTIF_REWARD_BASE + '/api/v1/notification')
+    fetch(Endpoints.NOTIF_REWARD_BASE + '/notification')
       .then(response => response.json())
       .then(data => setNotification(data.data.message))
       .catch(error => console.error(error));
