@@ -5,11 +5,15 @@ const Wastage = () => {
   const [wastages, setWastages] = useState([]);
 
   useEffect(() => {
-    fetch(Endpoints.NOTIF_REWARD_BASE + "/wastage")
+    getWastage();
+  }, []);
+
+  const getWastage = () => {
+    fetch(Endpoints.ACCOUNT_FOOD_BASE + "/wastage")
       .then((response) => response.json())
       .then((data) => setWastages(data.data.wastage))
       .catch((error) => console.error(error));
-  }, []);
+  }
 
   const renderTableHeader = () => {
     return (
@@ -46,7 +50,7 @@ const Wastage = () => {
 
   //food drop down list
   useEffect(() => {
-    fetch("http://localhost:3002/api/v1/getFoodList")
+    fetch(Endpoints.ACCOUNT_FOOD_BASE + "/getFoodList")
       .then((response) => response.json())
       .then((data) => setFoodItems(data.data.foodItems))
       .catch((error) => console.log(error));
@@ -55,7 +59,7 @@ const Wastage = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const response = await fetch(
-      Endpoints.NOTIF_REWARD_BASE + "/wasteage-entry",
+      Endpoints.ACCOUNT_FOOD_BASE + "/wasteage-entry",
       {
         method: "POST",
         headers: {
@@ -70,6 +74,7 @@ const Wastage = () => {
     );
     const data = await response.json();
     console.log(data);
+    getWastage();
   };
 
   const wastageForm = () => {
