@@ -41,3 +41,16 @@ Insert into reward values(3, 'Peach Tea', 5);
 Insert into reward values(4, 'Apple', 5);
 Insert into reward values(5, 'Orange', 5);
 Insert into reward values(6, 'Red Bean Bun', 5);
+
+
+-- roles
+insert into role (role_id, description)
+values('0','admin');
+
+insert into role (role_id, description)
+values('1','user');
+select * from role;
+
+insert into role (role_id, description)
+values('2','caterer');
+select * from role;

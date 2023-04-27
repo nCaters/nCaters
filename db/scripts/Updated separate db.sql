@@ -23,17 +23,6 @@ CREATE TABLE point (
 	FOREIGN KEY (user_id) REFERENCES "user"(user_id)
 );
 
-insert into role (role_id, description)
-values('0','admin');
-
-insert into role (role_id, description)
-values('1','user');
-select * from role;
-
-insert into role (role_id, description)
-values('2','caterer');
-select * from role;
-
 CREATE TABLE meal (
     meal_id INTEGER PRIMARY KEY,
 	name VARCHAR ( 50 ) NOT NULL
