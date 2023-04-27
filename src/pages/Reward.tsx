@@ -5,6 +5,32 @@ import Endpoints from "../Endpoints";
 
 const Reward = () => {
   const [rewards, setRewards] = useState([]);
+  const [points, setPoints] = useState(0);
+
+  const getPoints = async () => {
+    try {
+      const res = await fetch(Endpoints.DASHBOARD_BASE, {
+        method: "POST",
+        headers: { token: localStorage.token },
+      });
+      const parseData = await res.json();
+      console.log(JSON.stringify(parseData))
+
+      const pointsRes = await fetch(`${Endpoints.ACCOUNT_FOOD_BASE}/get-points?user_id=${parseData.user_id}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const pointsData = await pointsRes.json();
+      setPoints(pointsData.results)
+
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getPoints();
+  }, []);
 
   useEffect(() => {
     fetch(Endpoints.NOTIF_REWARD_BASE + "/reward")
@@ -43,6 +69,7 @@ const Reward = () => {
     <>
       <Dashboard />
       <h1>Rewards</h1>
+      <h2>Points availabe: {points}</h2>
       <table id="restaurant-table">
         {renderTableHeader()}
         {renderTableData()}
