@@ -93,7 +93,9 @@ export default function Register(props: any) {
             value={password}
             onChange={(e) => onChangeInput(e)}
           />
-          <button className='btn btn-outline-primary px-5'>Submit</button>
+          <button name='submit' className='btn btn-outline-primary px-5'>
+            Submit
+          </button>
         </form>
         <button
           className='btn btn-outline-primary mt-3 px-5'

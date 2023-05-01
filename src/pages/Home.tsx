@@ -37,6 +37,7 @@ const Home = () => {
         <button
           type='button'
           className='btn btn-outline-primary'
+          name='login'
           onClick={() => navigate("/login")}
         >
           Login
@@ -44,6 +45,7 @@ const Home = () => {
         <button
           type='button'
           className='btn btn-outline-primary'
+          name='register'
           onClick={() => navigate("/register")}
         >
           Register

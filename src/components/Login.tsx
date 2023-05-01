@@ -55,6 +55,7 @@ export default function Login(props: any) {
           <input
             type='text'
             name='email'
+            placeholder='email'
             value={email}
             onChange={(e) => onChangeInput(e)}
             className='form-control my-3'
@@ -62,11 +63,14 @@ export default function Login(props: any) {
           <input
             type='password'
             name='password'
+            placeholder='password'
             value={password}
             onChange={(e) => onChangeInput(e)}
             className='form-control my-3'
           />
-          <button className='btn btn-outline-primary px-5'>Login</button>
+          <button className='btn btn-outline-primary px-5' name='login'>
+            Login
+          </button>
         </form>
         <button
           className='btn btn-outline-primary mt-3 px-2'

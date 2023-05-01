@@ -20,7 +20,7 @@ export default function Dashboard(props: any) {
     if (roleId == 0) {
       setIsAdmin(true);
     }
-  }
+  };
 
   const getProfile = async () => {
     try {
@@ -52,27 +52,24 @@ export default function Dashboard(props: any) {
     getProfile();
   }, []);
 
-
   useEffect(() => {
-    fetch(Endpoints.NOTIF_REWARD_BASE + '/notification')
-      .then(response => response.json())
-      .then(data => setNotification(data.data.message))
-      .catch(error => console.error(error));
+    fetch(Endpoints.NOTIF_REWARD_BASE + "/notification")
+      .then((response) => response.json())
+      .then((data) => setNotification(data.data.message))
+      .catch((error) => console.error(error));
   }, []);
 
   const renderData = () => {
     return (
       <body>
         {notification.length > 0 && <h3>Announcements:</h3>}
-        {notification.length > 0 && notification.map((item: any) => {
-          return (
-            <p>{item.message}</p>
-          );
-        })}
+        {notification.length > 0 &&
+          notification.map((item: any) => {
+            return <p>{item.message}</p>;
+          })}
       </body>
     );
   };
-
 
   return (
     <div className='mt-5 text-center'>
@@ -116,22 +113,29 @@ export default function Dashboard(props: any) {
               </Link>
             </li>
             <li>
-              <Link to="/notification" className="nav-link">
+              <Link to='/notification' className='nav-link'>
                 Notification
               </Link>
             </li>
           </ul>
         </nav>
       )}
-      {isDashboard &&
+      {isDashboard && (
         <>
           <h1 className='mt-5'>Dashboard</h1>
           <h2>Welcome {name}</h2>
-          {!isAdmin && <body className="notification-message"> {renderData()} </body>}
-          <button onClick={(e) => logout(e)} className='btn btn-primary'>
+          {!isAdmin && (
+            <body className='notification-message'> {renderData()} </body>
+          )}
+          <button
+            onClick={(e) => logout(e)}
+            name='logout'
+            className='btn btn-primary'
+          >
             Logout
           </button>
-        </>}
+        </>
+      )}
     </div>
   );
 }
