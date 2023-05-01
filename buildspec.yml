@@ -11,9 +11,10 @@ phases:
       - npm install
   build:
     commands:
-      - npm run build
+      - echo Test started on `date`
+      - npm test -- --watchAll=false
       - echo Build started on `date`
-      - npm test
+      - npm run build
   post_build:
     commands:
       - echo Build completed on `date`
