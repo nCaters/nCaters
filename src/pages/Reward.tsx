@@ -16,12 +16,15 @@ const Reward = () => {
       const parseData = await res.json();
       console.log(JSON.stringify(parseData))
 
-      const pointsRes = await fetch(`${Endpoints.ACCOUNT_FOOD_BASE}/get-points?user_id=${parseData.user_id}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+      const pointsRes = await fetch(`${Endpoints.ACCOUNT_FOOD_BASE}/get-points`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: parseData.user_id,
+        }),
       });
       const pointsData = await pointsRes.json();
-      setPoints(pointsData.results)
+      setPoints(pointsData.data.points)
 
     } catch (err: any) {
       console.log(err.message);
@@ -69,7 +72,7 @@ const Reward = () => {
     <>
       <Dashboard />
       <h1>Rewards</h1>
-      <h2>Points availabe: {points}</h2>
+      <h2>Points Available: {points}</h2>
       <table id="restaurant-table">
         {renderTableHeader()}
         {renderTableData()}
