@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/FoodListing.css";
 import Endpoints from "../Endpoints";
+import { Link } from "react-router-dom";
 const Wastage = () => {
   const [wastages, setWastages] = useState([]);
 
@@ -13,7 +14,7 @@ const Wastage = () => {
       .then((response) => response.json())
       .then((data) => setWastages(data.data.wastage))
       .catch((error) => console.error(error));
-  }
+  };
 
   const renderTableHeader = () => {
     return (
@@ -81,25 +82,25 @@ const Wastage = () => {
     return (
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="date">Date:</label>
+          <label htmlFor='date'>Date:</label>
           <input
-            type="date"
-            id="date"
+            type='date'
+            id='date'
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
         <div>
-          <label htmlFor="foodWasteAmount">Food Waste Amount:</label>
+          <label htmlFor='foodWasteAmount'>Food Waste Amount:</label>
           <input
-            type="number"
-            id="foodWasteAmount"
+            type='number'
+            id='foodWasteAmount'
             value={foodWasteAmount}
             onChange={(e) => setFoodWasteAmount(e.target.value)}
           />
         </div>
         <div>
-          <label htmlFor="food">Food:</label>
+          <label htmlFor='food'>Food:</label>
           <select value={foodId} onChange={(e) => setFoodId(e.target.value)}>
             {foodItems.map((foodItem: any) => (
               <option key={foodItem.food_id} value={foodItem.food_id}>
@@ -108,16 +109,35 @@ const Wastage = () => {
             ))}
           </select>
         </div>
-        <button type="submit">Submit</button>
+        <button type='submit'>Submit</button>
       </form>
     );
   };
 
   return (
     <>
+      <nav>
+        <ul className='nav-list'>
+          <li>
+            <Link to='/foodListing' className='nav-link'>
+              Food
+            </Link>
+          </li>
+          <li>
+            <Link to='/wastage' className='nav-link'>
+              Wastage
+            </Link>
+          </li>
+          <li>
+            <Link to='/notification' className='nav-link'>
+              Notification
+            </Link>
+          </li>
+        </ul>
+      </nav>
       <h1>Wastage</h1>
       {wastageForm()}
-      <table id="restaurant-table">
+      <table id='restaurant-table'>
         {renderTableHeader()}
         {renderTableData()}
       </table>
