@@ -99,7 +99,7 @@ export default function Register(props: any) {
         </form>
         <button
           className='btn btn-outline-primary mt-3 px-5'
-          onClick={() => navigate("/register")}
+          onClick={() => navigate("/login")}
         >
           Login
         </button>
