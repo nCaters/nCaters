@@ -60,7 +60,7 @@ const Wastage = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const response = await fetch(
-      Endpoints.ACCOUNT_FOOD_BASE + "/wasteage-entry",
+      Endpoints.ACCOUNT_FOOD_BASE + "/wastage-entry",
       {
         method: "POST",
         headers: {
